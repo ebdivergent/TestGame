@@ -2,17 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BUllet : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Rigidbody rb;
+  
+ 
+    private void OnCollisionEnter (Collision collision)
     {
-        
+        //Debug.Log(collision.transform.name);
+        if(collision.transform.tag == "enemy")
+        {
+            Destroy(collision.gameObject);
+        }
     }
-
-    // Update is called once per frame
+    //protected float Animation;
+    //Update is called once per frame
     void Update()
     {
-        
+        //Animation += Time.deltaTime;
+        //Animation = Animation % 5f;
+        //transform.position = MathParabola.Parabola(Vector3.zero, Vector3.forward * 10f, 5f, Animation / 5f);
+        if (Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            GetComponent<ParabolaController>().FollowParabola();
+        }
+
     }
+
 }
