@@ -6,6 +6,9 @@ TagManager:
   tags:
   - enemy
   - coins
+  - bullet
+  - walls
+  - OtherEnemy
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
+  - ricochet
   - 
   - 
   - 

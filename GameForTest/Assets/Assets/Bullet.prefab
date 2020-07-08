@@ -108,7 +108,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!114 &114097467262314052
 MonoBehaviour:
@@ -122,6 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760a77dff0b1c8245963243dfce4b958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 0
   rb: {fileID: 6394369882726994555}
 --- !u!114 &114860744134151556
 MonoBehaviour:
@@ -135,8 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ff61f084fbc534d9f4e1d8a03ed593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  ParabolaRoot: {fileID: 1270836961279520866, guid: ba2434c0cd89d0847b2d42192bbe6089,
+  Speed: 12
+  ParabolaRoot: {fileID: 1902083218751998526, guid: e1668100f3514454dbad2cf90fed7ed9,
     type: 3}
   Autostart: 1
   Animation: 1

@@ -28,29 +28,29 @@ public class Gun : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             Vector3 touchPosition = Camera.main.ScreenToViewportPoint(touch.position);
-            switch (touch.phase)
-            {
-                //When a touch has first been detected, change the message and record the starting position
-                case TouchPhase.Began:
-                    // Record initial touch position.
-                    startPos = touch.position;
-                    break;
-                //Determine if the touch is a moving touch
-                case TouchPhase.Moved:
-                    // Determine direction by comparing the current touch position with the initial one
-                    direction.x = Math.Abs(touch.position.x - startPos.x);
-                    for(int i=0; i<direction.x; i++)
-                    { 
-                        startTwoPoint++;
-                    }
+            //switch (touch.phase)
+            //{
+            //    //When a touch has first been detected, change the message and record the starting position
+            //    case TouchPhase.Began:
+            //        // Record initial touch position.
+            //        startPos = touch.position;
+            //        break;
+            //    //Determine if the touch is a moving touch
+            //    case TouchPhase.Moved:
+            //        // Determine direction by comparing the current touch position with the initial one
+            //        direction.x = Math.Abs(touch.position.x - startPos.x);
+            //        for(int i=0; i<direction.x; i++)
+            //        { 
+            //            startTwoPoint++;
+            //        }
                     
-                    Debug.Log(direction.x + " Direction");
-                    break;
+            //        Debug.Log(direction.x + " Direction");
+            //        break;
                     
-                case TouchPhase.Ended:
-                    // Report that the touch has ended when it ends
-                    break;
-            }
+            //    case TouchPhase.Ended:
+            //        // Report that the touch has ended when it ends
+            //        break;
+            //}
             //if(touchPosition.x < 0.5 )
             //{
             //    pos--;
@@ -78,7 +78,8 @@ public class Gun : MonoBehaviour
             
             Transform BulletInstance = (Transform)Instantiate(bullet, GameObject.Find("FirePoint").transform.position, Quaternion.identity);
             BulletInstance.GetComponent<Rigidbody>().AddForce(transform.forward * BulletForce);
-            Debug.Log("Piu");
+            //Debug.Log("Piu");
+
         }
     }
 
