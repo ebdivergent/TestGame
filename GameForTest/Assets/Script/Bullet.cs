@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Bullet : MonoBehaviour
 {
     public Rigidbody rb;
@@ -14,6 +15,15 @@ public class Bullet : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        if (collision.transform.tag == "coins")
+        {
+            Destroy(collision.gameObject);
+        }
+        if (collision.transform.tag == "walls")
+        {
+            Destroy(gameObject);
+        }
+
     }
     //protected float Animation;
     //Update is called once per frame
