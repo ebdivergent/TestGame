@@ -28,25 +28,28 @@ public class Gun : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             Vector3 touchPosition = Camera.main.ScreenToViewportPoint(touch.position);
-            switch (touch.phase)
-            {
-                //When a touch has first been detected, change the message and record the starting position
-                case TouchPhase.Began:
-                    // Record initial touch position.
-                    startPos = touch.position;
-                    break;
-                //Determine if the touch is a moving touch
-                case TouchPhase.Moved:
-                    // Determine direction by comparing the current touch position with the initial one
-                    direction.x =touch.position.x- startPos.x;
-                    //parabolaPoint.position += direction * parabolaPoint * Moovingspeed;
-                    Shoot();
-                    break;
+            Shoot();
+            //switch (touch.phase)
+            //{
+            //    //When a touch has first been detected, change the message and record the starting position
+            //    case TouchPhase.Began:
+            //        // Record initial touch position.
+            //        startPos = touch.position;
+            //        break;
+            //    //Determine if the touch is a moving touch
+            //    case TouchPhase.Moved:
+            //        // Determine direction by comparing the current touch position with the initial one
+            //        direction.x =touch.position.x- startPos.x;
+            //        //parabolaPoint.position += direction * parabolaPoint * Moovingspeed;
+            //        Shoot();
+            //        break;
 
                     //    case TouchPhase.Ended:
                     //        // Report that the touch has ended when it ends
                     //        break;
                     //}
+
+                    // Проверка на нажатие
                     //if(touchPosition.x < 0.5 )
                     //{
                     //    pos--;
@@ -59,13 +62,13 @@ public class Gun : MonoBehaviour
                     //}
 
 
-
+            
                     
 
             }
         }
 
-    }
+    
    
     void Shoot()
     {
