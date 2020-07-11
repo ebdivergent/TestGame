@@ -35,36 +35,36 @@ public class ParabolaController : MonoBehaviour
     //draw
     protected ParabolaFly parabolaFly;
 
-    void OnDrawGizmos()
-    {
-        if (gizmo == null)
-        {
-            gizmo = new ParabolaFly(ParabolaRoot.transform);
-        }
+    //void OnDrawGizmos()
+    //{
+    //    if (gizmo == null)
+    //    {
+    //        gizmo = new ParabolaFly(ParabolaRoot.transform);
+    //    }
 
-        gizmo.RefreshTransforms(1f);
-        if ((gizmo.Points.Length - 1) % 2 != 0)
-            return;
+    //    gizmo.RefreshTransforms(1f);
+    //    if ((gizmo.Points.Length - 1) % 2 != 0)
+    //        return;
 
-        int accur = 50;
-        Vector3 prevPos = gizmo.Points[0].position;
-        for (int c = 1; c <= accur; c++)
-        {
-            float currTime = c * gizmo.GetDuration() / accur;
-            Vector3 currPos = gizmo.GetPositionAtTime(currTime);
-            float mag = (currPos - prevPos).magnitude * 2;
-            Gizmos.color = new Color(mag, 0, 0, 1);
-            Gizmos.DrawLine(prevPos, currPos);
-            Gizmos.DrawSphere(currPos, 0.01f);
-            prevPos = currPos;
-        }
-    }
+    //    int accur = 50;
+    //    Vector3 prevPos = gizmo.Points[0].position;
+    //    for (int c = 1; c <= accur; c++)
+    //    {
+    //        float currTime = c * gizmo.GetDuration() / accur;
+    //        Vector3 currPos = gizmo.GetPositionAtTime(currTime);
+    //        float mag = (currPos - prevPos).magnitude * 2;
+    //        Gizmos.color = new Color(mag, 0, 0, 1);
+    //        Gizmos.DrawLine(prevPos, currPos);
+    //        Gizmos.DrawSphere(currPos, 0.01f);
+    //        prevPos = currPos;
+    //    }
+    //}
 
 
     // Use this for initialization
     void Start()
     {
-
+        ParabolaRoot = GameObject.Find("PointFamily");
         parabolaFly = new ParabolaFly(ParabolaRoot.transform);
 
         if (Autostart)
