@@ -5,43 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerScript : MonoBehaviour
 {
+    public GameObject gun;
     public GameObject em;
-   void Update()
+    void Update()
     {
         
         if (!GameObject.Find("BadBoy"))
         {
             SceneManager.LoadScene(1);
         }
+        if (GameObject.Find("BadBoy") && !GameObject.Find ("Gun"))
+        {
+            Invoke("LoadLvlToStart", 5f);
+        }
+        
         
     }
-  
 
-    //void LoadLvl3()
-    //{
-    //    Enemy em = new Enemy();
-    //    if (em == null)
-    //    {
-    //        SceneManager.LoadScene(2);
-    //    }
-    //    if (em != null)
-    //    {
-    //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    //    }
-    //}
 
-    //void LoadLvlToStart()
-    //{
-    //    Enemy em = new Enemy();
-    //    if (em == null)
-    //    {
-    //        SceneManager.LoadScene(0);
-    //    }
-    //    if (em != null)
-    //    {
-    //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    //    }
-    //}
+    void Load3Lvl()
+    {
+        SceneManager.LoadScene(2);
+        
+    }
+
+    void LoadLvlToStart()
+    {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
 
 }

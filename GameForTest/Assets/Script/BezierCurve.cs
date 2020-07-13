@@ -6,11 +6,13 @@ using System;
 public class BezierCurve : MonoBehaviour
 {
     public LineRenderer lineRender;
-    private int numPoints = 30;
-    private Vector3[] positions = new Vector3 [30];
+    public int numPoints = 30;
+    public Vector3[] positions = new Vector3 [30];
     public Transform point0,
                      point1,
                      point2;
+    
+    Bullet b;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,7 @@ public class BezierCurve : MonoBehaviour
     void Update()
     {
         DrawQuadraticCurve();
+        
     }
     private void DrawLinearCurve()
     {
@@ -65,6 +68,12 @@ public class BezierCurve : MonoBehaviour
         return p;
 
     }
-    
+    //public Vector3 Dots()
+    //{
+
+    //    return lineRender.GetPosition(0);
+    //}
+
+
 }
 

@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("bullet"))
         {
             Invoke("Death", 3f);
+            FindObjectOfType<SoundManager>().Play("damage");
 
         }
     }

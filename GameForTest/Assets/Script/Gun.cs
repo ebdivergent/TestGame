@@ -2,24 +2,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
+using System.Runtime.CompilerServices;
 
 public class Gun : MonoBehaviour
 {
     public Transform bullet;
-    public TrajectoryRender Trajectory;
+    
     public int BulletForce = 1000;
     public Transform parabolaPoint;
-    float startTwoPoint;
+    
     private Camera mainCamera;
-    int pos = 0;
+    
     public Vector2 startPos;
     public Vector3 direction;
     float pointMoovingSpeed = 0.001f;
     public GameObject parabora;
+    
+    public PathType pathSystem = PathType.CatmullRom;
+    
     void Start()
     {
-        startTwoPoint = parabolaPoint.position.x;
+        //go = GameObject.Find("Bezier");
+        //bc = go.GetComponent<BezierCurve>();
+        
     }
     // Update is called once per frame
     void Update()
@@ -42,37 +48,15 @@ public class Gun : MonoBehaviour
                 case TouchPhase.Moved:
                     // Determine direction by comparing the current touch position with the initial one
                     direction.x = touch.position.x - startPos.x;
-                    if (parabolaPoint.position.x >= -10 && parabolaPoint.position.x <= 10)
-                    {
-
-                        //startTwoPoint += 0.1f;
-                        parabolaPoint.position += direction * pointMoovingSpeed;
-                    }
-                    //if (parabolaPoint.position.x <= 6)
+                    //if (parabolaPoint.position.x >= -10 && parabolaPoint.position.x <= 10)
                     //{
-                    //    startTwoPoint -= 0.1f;
-                    //    parabolaPoint.position += direction * pointMoovingSpeed;
+                        parabolaPoint.position += direction * pointMoovingSpeed;
                     //}
-                    //parabolaPoint.position += direction * pointMoovingSpeed;
+
                     Shoot();
                     break;
 
-                    //    case TouchPhase.Ended:
-                    //        // Report that the touch has ended when it ends
-                    //        break;
-                    //}
-
-                    // Проверка на нажатие
-                    //if(touchPosition.x < 0.5 )
-                    //{
-                    //    pos--;
-                    //    Debug.Log(pos+" Levo");
-                    //}
-                    //if(touchPosition.x > 0.5)
-                    //{
-                    //    pos++;
-                    //    Debug.Log(pos+" Pravo");
-                    //}
+                    
             }
         }
 
@@ -82,12 +66,14 @@ public class Gun : MonoBehaviour
         {
             if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-
                 
+                //bullet.transform.DOPath(bc.positions, 31, pathSystem);
                 Transform BulletInstance = (Transform)Instantiate(bullet, GameObject.Find("FirePoint").transform.position, Quaternion.identity);
                 BulletInstance.GetComponent<Rigidbody>().AddForce(transform.forward * BulletForce);
                 parabora.GetComponent<LineRenderer>().enabled = false;
-                //Debug.Log("Piu");
+                FindObjectOfType<SoundManager>().Play("shoot");
+                gameObject.SetActive(false);
+
 
             }
         }
