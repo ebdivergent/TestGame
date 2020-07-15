@@ -3,39 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneManagerScript : MonoBehaviour
 {
     [SerializeField]
     public static SceneManagerScript instance = null;
-    int sceneIndex;
+    public int sceneIndex;
     int levelComplete;
     public GameObject gun;
     public GameObject em;
-    Score score;
+    
+   
+    
+    
 
     void Start()
     {
-        if(instance == null)
+        
+        if (instance == null)
         {
             instance = this;
         }
-
-        score = FindObjectOfType <Score> ();
+        
+        
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
         levelComplete = PlayerPrefs.GetInt("levelComplete");
 
+      
     }
     void Update()
     {
 
-        
+       
         if (!GameObject.Find("BadBoy"))
         {
             isEndGame();
             NextLvl();
 
-            //PlayerPrefs.SetInt("Score", score.ChangeScore(coinValue));
+            
         }
         if (GameObject.Find("BadBoy") && !GameObject.Find ("Gun"))
         {
@@ -68,7 +74,9 @@ public class SceneManagerScript : MonoBehaviour
         }
         else
         { 
-            SceneManager.LoadScene(sceneIndex + 1); 
+            SceneManager.LoadScene(sceneIndex + 1);
+           
+
         }
         
 
@@ -78,10 +86,7 @@ public class SceneManagerScript : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-    //void LoadLvlToStart()
-    //{
-    //   SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    //}
+    
 
 
 }

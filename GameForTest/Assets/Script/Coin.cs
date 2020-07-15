@@ -5,7 +5,9 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public int coinValue = 1;
- 
+    public int coinValueNow = 1;
+    public int coinNow;
+    
     void Start()
     {
         
@@ -20,6 +22,7 @@ public class Coin : MonoBehaviour
         if (collision.gameObject.CompareTag ("bullet"))
         {
             Score.instance.ChangeScore(coinValue);
+            Score.instance.NowCoins(coinValue);
             FindObjectOfType<SoundManager>().Play("coin");
         }
     }
