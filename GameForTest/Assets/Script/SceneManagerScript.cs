@@ -14,9 +14,6 @@ public class SceneManagerScript : MonoBehaviour
     public GameObject gun;
     public GameObject em;
     
-   
-    
-    
 
     void Start()
     {
@@ -45,7 +42,7 @@ public class SceneManagerScript : MonoBehaviour
         }
         if (GameObject.Find("BadBoy") && !GameObject.Find ("Gun"))
         {
-            Invoke("LoadLvlToStart", 5f);
+            Invoke("LoadLvlToStart", 4f);
         }
 
         
@@ -75,18 +72,19 @@ public class SceneManagerScript : MonoBehaviour
         else
         { 
             SceneManager.LoadScene(sceneIndex + 1);
-           
-
         }
         
 
     }
 
-    void LoadFirstLvl()
+     void LoadFirstLvl()
     {
         SceneManager.LoadScene(0);
     }
-    
+    void LoadLvlToStart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
 
 }
