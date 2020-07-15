@@ -9,6 +9,7 @@ TagManager:
   - bullet
   - walls
   - OtherEnemy
+  - music
   layers:
   - Default
   - TransparentFX
