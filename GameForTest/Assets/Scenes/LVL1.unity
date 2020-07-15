@@ -406,7 +406,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132009692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1452687, y: -1.283522, z: -4.3872166}
+  m_LocalPosition: {x: -0.731, y: -1.283522, z: -4.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1426517099}
@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 224380812}
   - component: {fileID: 224380810}
   - component: {fileID: 224380811}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BadBoy
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -1192,7 +1192,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &746781257
 Transform:
   m_ObjectHideFlags: 0
@@ -1201,7 +1201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746781256}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.55422366, y: -0.06628127, z: 1.064}
+  m_LocalPosition: {x: -0.731, y: -1.283522, z: 1.064}
   m_LocalScale: {x: 1.4102381, y: 1.4102381, z: 1.4102381}
   m_Children: []
   m_Father: {fileID: 627903209}
@@ -2670,6 +2670,7 @@ GameObject:
   - component: {fileID: 1526093674}
   - component: {fileID: 1526093673}
   - component: {fileID: 1526093672}
+  - component: {fileID: 1526093676}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2706,7 +2707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2759,6 +2760,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1526093676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526093671}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dad62e2a2a41aa4984da8c1ed0563bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resoX: 0
+  resoY: 0
 --- !u!1 &1961059841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,8 +2927,8 @@ MonoBehaviour:
   parabolaPoint: {fileID: 876674202}
   startPos: {x: 0, y: 0}
   direction: {x: 0, y: 0, z: 0}
+  previousPosition: {x: 0, y: 0}
   parabora: {fileID: 1269906229}
-  pathSystem: 1
 --- !u!82 &1987382301
 AudioSource:
   m_ObjectHideFlags: 0

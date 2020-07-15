@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 6394369882726994559}
   - component: {fileID: 6394369882726994555}
   - component: {fileID: 114097467262314052}
-  - component: {fileID: 114860744134151556}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Bullet
   m_TagString: bullet
   m_Icon: {fileID: 0}
@@ -30,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6394369882726994558}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.30342215, y: 0.64, z: -13.225371}
+  m_LocalPosition: {x: 0.41233838, y: 0.34839952, z: -14.866459}
   m_LocalScale: {x: 0.13007846, y: 0.13007846, z: 0.13007846}
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,7 +109,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 10
   m_CollisionDetection: 0
 --- !u!114 &114097467262314052
 MonoBehaviour:
@@ -127,21 +126,6 @@ MonoBehaviour:
   lineRender: {fileID: 0}
   collisionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   rb: {fileID: 6394369882726994555}
---- !u!114 &114860744134151556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6394369882726994558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87ff61f084fbc534d9f4e1d8a03ed593, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 12
-  ParabolaRoot: {fileID: 0}
-  Autostart: 1
-  Animation: 1
+  go: {fileID: 0}

@@ -7,26 +7,38 @@ using DG.Tweening;
 public class Bullet : MonoBehaviour
 {
     public LineRenderer lineRender;
-    
-    public LayerMask collisionMask;
+
+
     public Rigidbody rb;
-    private float speed = 15;
-    
-   
-   
+
+
+    public GameObject go;
+    private GameObject newLine;
+
+    void Start()
+    {
+
+        go = GameObject.Find("Bezier");
+        newLine = Instantiate(go);
+        LineRenderer oldLine = go.GetComponent<LineRenderer>();
+       
+
+        Vector3[] newPos = new Vector3[oldLine.positionCount];
+
+        oldLine.GetPositions(newPos);
+        //Copy Old postion to the new LineRenderer
+        newLine.GetComponent<LineRenderer>().SetPositions(newPos);
+
+
+        gameObject.transform.DOPath(newPos, 1f, PathType.CatmullRom);
+
+    }
+
     void Update()
     {
-        
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        //Рикошет 
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Time.deltaTime * speed + .1f, collisionMask))
-        {
-            Vector3 reflectDir = Vector3.Reflect(ray.direction, hit.normal);
-            float rot = 90 - Mathf.Atan2(reflectDir.z, reflectDir.x) * Mathf.Rad2Deg;
-            transform.eulerAngles = new Vector3(0, rot, 0);
-        }
+
+
+       
 
 
     }
@@ -42,6 +54,7 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
 
     }
 

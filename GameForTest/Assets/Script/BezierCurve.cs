@@ -16,10 +16,11 @@ public class BezierCurve : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //lineRender.SetVertexCount(numPoints);
+        
         lineRender.positionCount = numPoints;
-        //DrawLinearCurve();
+        
         DrawQuadraticCurve();
+        
     }
 
     // Update is called once per frame
@@ -28,16 +29,7 @@ public class BezierCurve : MonoBehaviour
         DrawQuadraticCurve();
         
     }
-    private void DrawLinearCurve()
-    {
-        for (int i=1; i < numPoints + 1; i++)
-        {
-            float t = i / (float) numPoints;
-            positions[i - 1] = CalculateLinearBezierPoint(t, point0.position, point1.position);
-        }
-        lineRender.SetPositions(positions);
-
-    }
+    
 
     private void DrawQuadraticCurve()
     {
@@ -51,11 +43,7 @@ public class BezierCurve : MonoBehaviour
         
 
     }
-    private Vector3 CalculateLinearBezierPoint(float t,Vector3 p0,Vector3 p1)
-    {
-        return p0 + t * (p1 - p0);
 
-    }
 
     private Vector3 CalculateQuadraticBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2)
     {
@@ -68,12 +56,11 @@ public class BezierCurve : MonoBehaviour
         return p;
 
     }
-    //public Vector3 Dots()
+   
+    //public void Dots(Vector3[] positions)
     //{
-
-    //    return lineRender.GetPosition(0);
+    //    lineRender.GetPositions(positions);
     //}
-
 
 }
 

@@ -9,67 +9,78 @@ public class Gun : MonoBehaviour
 {
     public Transform bullet;
     
-    public int BulletForce = 1000;
+    public int BulletForce = 200;
     public Transform parabolaPoint;
     
     private Camera mainCamera;
     
     public Vector2 startPos;
     public Vector3 direction;
-    float pointMoovingSpeed = 0.001f;
+    public Vector2 previousPosition;
+    float pointMoovingSpeed = 10f;
     public GameObject parabora;
-    
-    public PathType pathSystem = PathType.CatmullRom;
-    
-    void Start()
-    {
-        //go = GameObject.Find("Bezier");
-        //bc = go.GetComponent<BezierCurve>();
-        
-    }
-    // Update is called once per frame
+   
+
+
+   
     void Update()
     {
 
-        if (Input.touchCount > 0)
+#if !UNITY_EDITOR
+    if (Input.touchCount > 0)
+    {
+        Touch touch = Input.GetTouch(0);
+        Vector3 touchPosition = Camera.main.ScreenToViewportPoint(touch.position);
+
+        switch (touch.phase)
         {
-            Touch touch = Input.GetTouch(0);
-            Vector3 touchPosition = Camera.main.ScreenToViewportPoint(touch.position);
-            Shoot();
-            switch (touch.phase)
-            {
-                //When a touch has first been detected, change the message and record the starting position
-                case TouchPhase.Began:
-                    // Record initial touch position.
-                    parabora.GetComponent<LineRenderer>().enabled = true;
-                    startPos = touch.position;
-                    break;
-                //Determine if the touch is a moving touch
-                case TouchPhase.Moved:
-                    // Determine direction by comparing the current touch position with the initial one
-                    direction.x = touch.position.x - startPos.x;
-                    //if (parabolaPoint.position.x >= -10 && parabolaPoint.position.x <= 10)
-                    //{
-                        parabolaPoint.position += direction * pointMoovingSpeed;
-                    //}
+            case TouchPhase.Began:
+                parabora.GetComponent<LineRenderer>().enabled = true;
+                startPos = touch.position;
+                break;
 
-                    Shoot();
-                    break;
+            case TouchPhase.Moved:
 
-                    
-            }
-        }
-
-
-
-        void Shoot()
-        {
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
                 
-                //bullet.transform.DOPath(bc.positions, 31, pathSystem);
-                Transform BulletInstance = (Transform)Instantiate(bullet, GameObject.Find("FirePoint").transform.position, Quaternion.identity);
-                BulletInstance.GetComponent<Rigidbody>().AddForce(transform.forward * BulletForce);
+                direction.x  = (Input.mousePosition.x  - previousPosition.x) / Screen.width;
+
+                parabolaPoint.position += direction * pointMoovingSpeed;
+
+
+                
+                break;
+        }
+    }
+#else
+        if (Input.GetMouseButtonDown(0))
+        {
+            parabora.GetComponent<LineRenderer>().enabled = true;
+            startPos = Input.mousePosition;
+
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            Vector3 touchPosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+            direction.x  = (Input.mousePosition.x  - previousPosition.x) / Screen.width;
+            
+            parabolaPoint.position += direction * pointMoovingSpeed;
+           
+
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            Shoot();
+        }
+#endif
+         void Shoot()
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+
+                
+                Transform BulletInstance = (Transform)Instantiate(bullet, GameObject.Find("Point0").transform.position, Quaternion.identity);
+                //BulletInstance.GetComponent<Rigidbody>().AddForce(transform.position * BulletForce);
                 parabora.GetComponent<LineRenderer>().enabled = false;
                 FindObjectOfType<SoundManager>().Play("shoot");
                 gameObject.SetActive(false);
@@ -77,6 +88,9 @@ public class Gun : MonoBehaviour
 
             }
         }
+
+        previousPosition = Input.mousePosition;
     }
+ 
 }
 

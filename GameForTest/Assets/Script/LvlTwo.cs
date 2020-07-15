@@ -16,7 +16,7 @@ public class LvlTwo : MonoBehaviour
         }
         if (GameObject.Find("BadBoy") && !GameObject.Find("Gun"))
         {
-            Invoke("LoadLvlToStart", 6f);
+            Invoke("LoadLvlToStart", 7f);
         }
 
 
