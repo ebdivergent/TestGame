@@ -5,6 +5,11 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public int coinValue = 1;
+ 
+    void Start()
+    {
+        
+    }
     void Update()
     {
         transform.Rotate(20 * Time.deltaTime, 0, 0);
